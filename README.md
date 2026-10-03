@@ -1,42 +1,50 @@
-# 🛡️ Guardião Pix: Prevenção a Golpes por Engenharia Social
+# 🛡️ Guardião Pix
 
-Sistema inteligente de avaliação de risco pré-transacional e intervenção comportamental focado em mitigar fraudes por engenharia social no ecossistema Pix.
+> **Sistema Inteligente de Prevenção a Golpes por Engenharia Social**
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://guardiao-pix.streamlit.app)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Database](https://img.shields.io/badge/Database-SQLite-lightgrey.svg)](https://www.sqlite.org/)
+
+---
+
+## 🚀 Aplicação Online (Live Demo)
+
+Aceda à aplicação em tempo real diretamente pelo navegador:  
+👉 **[guardiao-pix.streamlit.app](https://guardiao-pix.streamlit.app)**
 
 ---
 
 ## 📌 Sobre o Projeto
 
-As fraudes financeiras baseadas em manipulação psicológica (ex.: golpe do falso parente, falsa central telefónica e engenharia social) frequentemente passam pelos sistemas tradicionais de cibersegurança por serem executadas diretamente pelos próprios utilizadores legítimos.
+O **Guardião Pix** é uma solução *open-source* focada em mitigação de riscos de fraude financeira decorrentes de técnicas de engenharia social (como falso parente, falsa central telefônica e coação).
 
-O **Guardião Pix** atua na camada de prevenção pré-transacional, analisando padrões de comportamento e dados do recebedor antes que o Pix seja concluído, acionando alertas dinâmicos e etapas de verificação graduais para proteger os utilizadores.
-
----
-
-## 🎯 Origem e Motivação
-
-O projeto nasceu de uma motivação real: a experiência de ver um familiar próximo ser vítima de um golpe por engenharia social no Pix. A necessidade de criar barreiras preventivas para proteger utilizadores em momentos de vulnerabilidade inspirou o desenvolvimento desta solução.
+A ferramenta realiza uma análise pré-transacional combinando **anonimização de dados (LGPD)**, **análise comportamental** e **base comunitária de denúncias**.
 
 ---
 
-## 💡 Principais Funcionalidades
+## ✨ Principais Funcionalidades
 
-- **🔍 Verificação Pré-Transacional:** Análise de risco da chave Pix combinada a um questionário comportamental focado em engenharia social.
-- **🚨 Canal de Denúncia Colaborativa:** Permitir o reporte em tempo real de chaves e abordagens suspeitas para alertar a comunidade.
-- **🤝 Rede de Apoio (Mecanismo do Guardião):** Notificação preventiva para familiares/guardiões cadastrados em caso de transações de alto risco.
-- **🔒 Privacidade & LGPD:** Aplicação do algoritmo de hash **SHA-256** para mascaramento e proteção de dados sensíveis.
-
----
-
-## 🛠️ Tecnologias e Metodologia
-
-- **Linguagem:** Python 3.x
-- **Interface Web:** Streamlit
-- **Segurança:** SHA-256 para anonimização de dados
-- **Metodologia de Desenvolvimento:** Desenvolvimento assistido por Inteligência Artificial e **Engenharia de Prompt**, otimizando a prototipagem, a estruturação do código e a construção da interface de utilizador.
+- 🔒 **Proteção LGPD:** Criptografia unidirecional das chaves Pix via Hash SHA-256 antes do processamento.
+- 📊 **Cálculo Dinâmico de Risco:** Algoritmo que avalia valor da transação, horário da operação (ex.: madrugadas) e questionários de verificação interpessoal.
+- 🚨 **Rede de Alertas Comunitários:** Permite aos utilizadores reportarem abordagens suspeitas para alertar a comunidade.
+- 💾 **Persistência de Dados:** Armazenamento seguro de denúncias via SQLite.
+- 📈 **Painel de Análise:** Dashboards interativos para monitorização do volume de alertas da rede.
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+## 🛠️ Tecnologias Utilizadas
+
+- **Linguagem:** Python 3.10+
+- **Interface & Dashboard:** Streamlit
+- **Análise de Dados:** Pandas
+- **Persistência de Dados:** SQLite
+- **Criptografia / Hashing:** `hashlib` (SHA-256)
+- **Hospedagem / Cloud:** Streamlit Community Cloud
+
+---
+
+## 💻 Como Rodar Localmente
 
 1. Clone o repositório:
    ```bash

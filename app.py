@@ -22,6 +22,16 @@ def init_db():
             data TEXT NOT NULL
         )
     ''')
+    
+    # Se a base estiver vazia, insere um registo fictício de demonstração
+    c.execute("SELECT COUNT(*) FROM denuncias")
+    if c.fetchone()[0] == 0:
+        data_atual = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        c.execute(
+            "INSERT INTO denuncias (chave, motivo, data) VALUES (?, ?, ?)",
+            ("11999998888", "Tentativa de golpe via WhatsApp (Falso parente)", data_atual)
+        )
+    
     conn.commit()
     conn.close()
 
@@ -39,14 +49,14 @@ def salvar_denuncia(chave, motivo):
     conn.commit()
     conn.close()
 
-# Inicializa banco de dados local
+# Inicializa a base de dados
 init_db()
 
-# Função de Hash SHA-256
+# Função de Hash SHA-256 (Anonimização LGPD)
 def gerar_hash_lgpd(chave):
     return hashlib.sha256(chave.strip().encode('utf-8')).hexdigest()
 
-# Navegação
+# Navegação por Abas
 aba1, aba2, aba3 = st.tabs(["🔍 Consultar Chave Pix", "🚨 Reportar Suspeita", "⚙️ Painel do Guardião"])
 
 # --- ABA 1: CONSULTAR CHAVE ---
@@ -77,18 +87,18 @@ with aba1:
             pontuacao_risco = 0
             motivos = []
 
-            # 1. Horário de alto risco
+            # 1. Risco por horário atípico (22h às 06h)
             hora_atual = datetime.datetime.now().hour
             if hora_atual >= 22 or hora_atual < 6:
                 pontuacao_risco += 25
                 motivos.append("Transação realizada em horário de alto risco (22h - 06h).")
 
-            # 2. Valor atípico
+            # 2. Risco por valor elevado
             if valor_input > 1000:
                 pontuacao_risco += 20
                 motivos.append("Valor elevado para transação rápida.")
 
-            # 3. Questionário
+            # 3. Questionário interpessoal
             if q1:
                 pontuacao_risco += 30
                 motivos.append("Padrão clássico de urgência/coação (Falso parente).")
@@ -99,7 +109,7 @@ with aba1:
                 pontuacao_risco += 20
                 motivos.append("Titularidade da chave divergente.")
 
-            # 4. Checagem na Base SQLite
+            # 4. Checagem na Base SQLite comunitária
             df_denuncias = carregar_denuncias()
             denuncias_existentes = df_denuncias[df_denuncias['chave'] == chave_input]
             if not denuncias_existentes.empty:
@@ -109,7 +119,7 @@ with aba1:
 
             pontuacao_risco = min(pontuacao_risco, 100)
 
-            # Exibição do resultado
+            # Exibição do Resultado
             st.divider()
             if pontuacao_risco >= 60:
                 st.error(f"🔴 Nível de Risco: ALTO ({pontuacao_risco}/100)")
@@ -138,6 +148,7 @@ with aba2:
         if chave_reporte and motivo_reporte:
             salvar_denuncia(chave_reporte, motivo_reporte)
             st.success("Denúncia gravada na base de dados SQLite com sucesso!")
+            st.rerun()
         else:
             st.warning("Preencha todos os campos para enviar o reporte.")
 
