@@ -4,16 +4,26 @@ Sistema inteligente de avaliação de risco pré-transacional e intervenção co
 
 ---
 
-### 📌 Sobre o Projeto
+## 📌 Sobre o Projeto
 
-As fraudes financeiras baseadas em manipulação psicológica (ex.: golpe do falso parente, falsa central telefônica) passam frequentemente pelos sistemas perimetrais de cibersegurança tradicionais por serem executadas voluntariamente pelas próprias vítimas.
+As fraudes financeiras baseadas em manipulação psicológica (ex.: golpe do falso parente, falsa central telefónica e engenharia social) passam frequentemente pelos sistemas tradicionais de cibersegurança por serem executadas diretamente pelos próprios utilizadores legítimos em suas contas.
 
-O **Guardião Pix** combina **Ciência de Dados** e a **Teoria do Nudge (Arquitetura da Escolha)** para criar um índice dinâmico de risco (*Risk Score*) e acionar uma rede de apoio ("Guardião") antes da conclusão de transações suspeitas.
+O **Guardião Pix** atua na camada de prevenção pré-transacional, analisando padrões de comportamento do utilizador e dados do recebedor antes que o Pix seja concluído, acionando alertas dinâmicos e etapas de verificação graduais para interromper potenciais golpes.
 
 ---
 
-### 🔒 Conformidade Regulatória (LGPD)
+## 🛠️ Tecnologias Utilizadas
 
-Para estar em total conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018):
-- Nenhuma chave Pix é armazenada ou processada em texto puro.
-- As chaves são convertidas em **Hashes Criptográficos SHA-256** unidirecionais antes de qualquer consulta ou gravação na base de dados.
+- **Linguagem:** Python 3.x
+- **Estruturas de Dados:** Hash tables, listas dinâmicas e análise sintética de padrões
+- **Validação:** Algoritmo de hash seguro (SHA-256) para verificação de chaves e dados
+- **Controlo de Versão:** Git & GitHub
+
+---
+
+## 🚀 Como Executar o Projeto
+
+1. **Clonar o repositório:**
+   ```bash
+   git clone [https://github.com/isacunha1207-lab/guardiao-pix.git](https://github.com/isacunha1207-lab/guardiao-pix.git)
+   cd guardiao-pix
