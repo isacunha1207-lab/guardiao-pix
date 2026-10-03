@@ -5,7 +5,7 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://guardiao-pix.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Database](https://img.shields.io/badge/Database-SQLite-lightgrey.svg)](https://www.sqlite.org/)
-
+[![Tests](https://github.com/isacunha1207-lab/guardiao-pix/actions/workflows/pytest.yml/badge.svg)
 ---
 
 ## 🚀 Aplicação Online (Live Demo)
